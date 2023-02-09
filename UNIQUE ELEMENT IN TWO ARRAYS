@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+  int arr[20],i,j,k,size;
+  clrscr();
+  printf("\n enter array size:");
+  scanf("%d",&size);
+  printf("\n accept numbers:");
+  for(i=0;i<size;i++)
+  scanf("%d",&arr[i]);
+  printf("\n array with unique list:");
+  for(i=0;i<size;i++)
+  {
+  for(j=i+1;j<size;j++)
+  {
+  if(arr[j]=arr[i])
+  {
+  for(k=j;k<size;k++)
+  {
+  arr[k]=arr[k+1];
+  }
+  size;
+  }else
+  j++;
+  }
+ }
+ for(i=0;i<size;i++)
+ {
+ printf("%d",arr[i]);
+ }
+ getch();
+ }
+ OUTPUT:-
+ enter the number of elements 5
+ enter the array elements 4 6 4 5 7
+ enter after sorting 4 4 5 6 7
+ the number of distinct element are 4
