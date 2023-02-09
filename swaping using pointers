@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+ float*[10];
+ int i,n;
+ clrscr();
+ void swap 34(float*ptr1,float*ptr2);
+ printf("how many elements \n");
+ scanf("%d",&n);
+ printf("enter elements one by one \n");
+ for(i=0;i<n;i++)
+ {
+  scanf("%f",x+i);
+  }
+  swap 34(x+2,x+3);
+  printf("\n resultant array \n");
+  for(i=0;i<n;i++)
+  {
+  printf("x[%d]=%f\n",i,x[i]);
+  }
+  getch();
+  }
+  output:-
+  enter elements one by one
+  10 20 30 40 50
+  resultant array
+  x[0]=10
+  x[1]=20
+  x[2]=30
+  x[3]=40
+  x[4]=50
