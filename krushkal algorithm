@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 100
+#define INF 1000000
+
+typedef struct {
+    int u, v, weight;
+} Edge;
+
+Edge edges[MAX];
+int parent[MAX], rank[MAX];
+int edgeCount = 0;
+int find(int u) {
+    if (parent[u] != u) {
+        parent[u] = find(parent[u]); // Path compression
+    }
+    return parent[u];
+}
+void unionSets(int u, int v) {
+    int rootU = find(u);
+    int rootV = find(v);
+
+    if (rootU != rootV) {
+        if (rank[rootU] > rank[rootV]) {
+            parent[rootV] = rootU;
+        } else if (rank[rootU] < rank[rootV]) {
+            parent[rootU] = rootV;
+        } else {
+            parent[rootV] = rootU;
+            rank[rootU]++;
+        }
+    }
+}
+int compareEdges(const void *a, const void *b) {
+    return ((Edge *)a)->weight - ((Edge *)b)->weight;
+}
+void kruskalMST(int n) {
+    int mstWeight = 0;
+    for (int i = 0; i < n; i++) {
+        parent[i] = i;
+        rank[i] = 0;
+    }
+    qsort(edges, edgeCount, sizeof(Edge), compareEdges);
+
+    printf("Edge \tWeight\n");
+    for (int i = 0; i < edgeCount; i++) {
+        int u = edges[i].u;
+        int v = edges[i].v;
+        int weight = edges[i].weight;
+        if (find(u) != find(v)) {
+            printf("%d - %d \t%d\n", u, v, weight);
+            unionSets(u, v);
+            mstWeight += weight;
+        }
+    }
+
+    printf("Total Weight of MST: %d\n", mstWeight);
+}
+
+int main() {
+    int n, m;
+
+    printf("Enter the number of vertices: ");
+    scanf("%d", &n);
+
+    printf("Enter the number of edges: ");
+    scanf("%d", &m);
+
+    printf("Enter the edges (u v weight):\n");
+    for (int i = 0; i < m; i++) {
+        scanf("%d %d %d", &edges[i].u, &edges[i].v, &edges[i].weight);
+        edgeCount++;
+    }
+
+    kruskalMST(n);
+
+    return 0;
+}
