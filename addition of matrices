@@ -1,0 +1,31 @@
+#include <stdio.h>
+int main() {
+    int i, j, m1[2][2], m2[2][2], sum[2][2];
+    printf("Enter the elements of the first 2x2 matrix:\n");
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 2; j++) {
+            scanf("%d", &m1[i][j]);
+        }
+    }
+    printf("Enter the elements of the second 2x2 matrix:\n");
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 2; j++) {
+            scanf("%d", &m2[i][j]);
+        }
+    }
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 2; j++) {
+            sum[i][j] = m1[i][j] + m2[i][j];
+        }
+    }
+    printf("Sum of the matrices:\n");
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 2; j++) {
+            printf("%d ", sum[i][j]);
+        }
+        printf("\n");  
+    }
+    getchar();  
+
+    return 0;
+}
